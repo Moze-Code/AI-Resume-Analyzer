@@ -1,24 +1,42 @@
 import React from 'react';
+import { UploadJobDesc, UploadResume } from '../components';
 
 export default function ResumeScreen() {
+  const [currentStep, setCurrentStep] = React.useState(0);
   return (
     <main style={styles.main}>
-      <h1>Resume Screen</h1>
-      <p>Welcome! This page is currently under construction.</p>
+      <div style={styles.currentStep}>
+       {/* current step as a button that can be pressed*/}
+      </div>
+     <div style={styles.stepAction}>
+
+      {
+        currentStep === 0 && (
+          //resume upload
+          <UploadResume/>
+        )
+      }
+         {
+        currentStep === 1 && (
+          //job description
+          <UploadJobDesc/>
+        )
+      }
+         {
+        currentStep === 2 && (
+          //score
+          <div></div>
+        )
+      }
+
+
+     </div>
     </main>
   );
 }
 
 const styles = {
   main: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '100vh',
-    textAlign: 'center',
-    backgroundColor: '#f0f0f0',
-    color: '#333',
-    fontFamily: 'Arial, sans-serif',
+   
   },
 };
