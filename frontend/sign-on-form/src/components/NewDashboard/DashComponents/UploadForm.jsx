@@ -1,3 +1,8 @@
+/**
+ * This file contains the upload form logic, which allows a user to upload a Resume
+ * and a job description
+ */
+
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button2.tsx"
 import jsPDF from 'jspdf';
@@ -34,7 +39,7 @@ import {
 
 
 
-export default function ResumeScreen({setAverageFitScoreData,setFeedBackLoaded,setFeedBackLoading,setProgress, setFeedBack, setFitScore}) {
+export default function UploadFormArea({setAverageFitScoreData,setFeedBackLoaded,setFeedBackLoading,setProgress, setFeedBack, setFitScore}) {
 
   const {toast} = useToast();
   const [resume, setResume] = React.useState(null);

@@ -2,7 +2,8 @@ import { StatBlock } from '@/components/NewDashboard/DashComponents/StatBlock'
 import { CircularGauge } from '@/components/NewDashboard/DashComponents/CircularGauge'
 import { SuggestedImprovements } from '@/components/NewDashboard/DashComponents/SuggestedImprovements'
 import { AverageFitScore } from '@/components/NewDashboard/DashComponents/AverageFitScore'
-import { ResumeScreen } from '@/screens';
+//import { ResumeScreen } from '@/screens';
+import UploadFormArea from './DashComponents/UploadForm.jsx';
 import { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button2.tsx"
 import jsPDF from 'jspdf';
@@ -88,7 +89,7 @@ export default function DashboardPage() {
     <div className="flex gap-8 h-full p-6">
   {/* Left Panel */}
   <div className="w-[35%] flex items-center justify-center">
-    <ResumeScreen setAverageFitScoreData = {setAverageFitScoreData} setFeedBackLoaded={setFeedBackLoaded} setFeedBackLoading={setFeedBackLoading} setProgress={setProgress} setFeedBack={setFeedBack} setFitScore={setFitScore}/>
+    <UploadFormArea setAverageFitScoreData = {setAverageFitScoreData} setFeedBackLoaded={setFeedBackLoaded} setFeedBackLoading={setFeedBackLoading} setProgress={setProgress} setFeedBack={setFeedBack} setFitScore={setFitScore}/>
   </div>
 
   {/* Main Content Area */}

@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { LoginSignupScreen, ResumeScreen, DashScreen4 } from "./screens";
+import { LoginSignupScreen, DashScreen4, UploadFormArea } from "./screens";
+
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
         {/* Default login/signup screen */}
         <Route path="/" element={<LoginSignupScreen />} />
         {/* Resume upload screen */}
-        <Route path="/resumeUpload" element={<ResumeScreen />} />
+        <Route path="/Uploadform" element={<UploadFormArea />} />
         {/*Dashboard screen*/}
         <Route path="/dashboard2" element={<DashScreen4 />} />
         {/* Fallback for unmatched routes */}
