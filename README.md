@@ -1,6 +1,6 @@
 # AI-Powered Resume Analyzer and Job Matcher
 
-Project uses Google AI model Gemini to take inputs (Resume and Job Description) and return feedback.
+Project uses Google's AI model Gemini to take inputs (Resume and Job Description) and return feedback.
 
 ## Project Members:
 
