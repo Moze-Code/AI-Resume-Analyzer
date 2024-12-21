@@ -1,6 +1,6 @@
 # AI-Powered Resume Analyzer and Job Matcher
 
-Project uses ChatGPT AI to take inputs (Resumes) and return feedback.
+Project uses Google AI model Gemini to take inputs (Resume and Job Description) and return feedback.
 
 ## Project Members:
 
