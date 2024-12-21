@@ -2,6 +2,7 @@ import React from 'react';
 import { Home, LogOut } from 'lucide-react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
+import gImage from '../../assets/Google-Gemini-AI-2 (1).webp';
 
 const navItems = [
   { icon: Home, label: 'Dashboard', href: '/dashboard2' },
@@ -31,6 +32,16 @@ export function Sidebar({ className, ...props }) {
     <div className={`bg-card flex flex-col ${className}`} {...props}>
       <div className="p-6">
         <h1 className="text-2xl font-bold text-foreground">AI Resume Analyzer</h1>
+        <div className="flex items-center mt-2 text-sm text-muted-foreground">
+          <span className="mr-1">Powered by</span>
+          <img
+            src={gImage}
+            alt="Google Gemini"
+            width={90}
+            height={20}
+            className="inline-block"
+          />
+        </div>
       </div>
       <nav className="flex-1 mt-6">
         {navItems.map((item) => (
