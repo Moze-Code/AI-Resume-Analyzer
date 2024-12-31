@@ -37,7 +37,6 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip.tsx"
 
-import { uploadTooBackend } from '@/components/AuthenticationAPI/AuthenAPI';
 
 export default function UploadFormArea({setAverageFitScoreData,setFeedBackLoaded,setFeedBackLoading,setProgress, setFeedBack, setFitScore}) {
 
