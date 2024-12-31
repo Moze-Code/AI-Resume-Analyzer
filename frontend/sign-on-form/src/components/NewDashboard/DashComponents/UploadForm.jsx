@@ -37,7 +37,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip.tsx"
 
-
+import { uploadTooBackend } from '@/components/AuthenticationAPI/AuthenAPI';
 
 export default function UploadFormArea({setAverageFitScoreData,setFeedBackLoaded,setFeedBackLoading,setProgress, setFeedBack, setFitScore}) {
 
@@ -55,133 +55,134 @@ export default function UploadFormArea({setAverageFitScoreData,setFeedBackLoaded
   
     //write code to upload the blob to the backend endpoint http://127.0.0.1:8000/ the endpoint accepts json resume_file *string($binary)
     const [ud, setUd] = useState(null);
-
-    const uploadToBackend = async (blob) => {
-      const formData = new FormData();
-      formData.append('resume_file', blob);
     
-      try {
-        const response = await fetch(`${base_url}/api/resume-upload`, {
-          method: 'POST',
-          body: formData,
-        });
-    
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-    
-        const data = await response.json(); // Should have uid
-        console.log('Upload Response:', data);
-    
-        if (data && data.uid) {
-          setUd(data.uid); // Update the state variable 'ud'
-          console.log('UID:', data.uid); // Should print the UID
-        }
-    
-        return true;
-      } catch (error) {
-        console.error('Error uploading resume:', error);
-        return false;
-      }
-    };
-
-    const addNewFitScore = (setAverageFitScoreData, newScore) => {
-      setAverageFitScoreData((prev) => {
-        // Find the next upload number
-        const nextUpload = (prev.length > 0 ? parseInt(prev[prev.length - 1].upload) + 1 : 1).toString();
-    
-        // Create a new object
-        const newObject = { upload: nextUpload, score: newScore };
-    
-        // Return the updated array
-        return [...prev, newObject];
+  const uploadToBackend = async (blob) => {
+    const formData = new FormData();
+    formData.append('resume_file', blob);
+  
+    try {
+      const response = await fetch(`${base_url}/api/resume-upload`, {
+        method: 'POST',
+        body: formData,
       });
-    };
-
-    const uploadJobDescription = async () => {
-      setFeedBackLoaded(false);
-      if (!ud) {
-        console.error('UID is not set yet!');
-        return;
+  
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
       }
+  
+      const data = await response.json(); // Should have uid
+      console.log('Upload Response:', data);
+  
+      if (data && data.uid) {
+        setUd(data.uid); // Update the state variable 'ud'
+        console.log('UID:', data.uid); // Should print the UID
+      }
+  
+      return true;
+    } catch (error) {
+      console.error('Error uploading resume:', error);
+      return false;
+    }
+  };
     
-      const payload = {
-        uid: ud,
-        job_description: jobDescription,
-      };
-      let title, description;
-      setProgress(0);
-      setFeedBackLoading(true);
-    
-      // Start a fake progress interval
-      const progressInterval = setInterval(() => {
-        setProgress((prev) => {
-          if (prev < 90) {
-            return prev + 10;
-          }
-          clearInterval(progressInterval);
-          return prev;
-        });
-      }, 200);
-    
-      try {
-        const response = await fetch(`${base_url}/api/job-description`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(payload),
-        });
-    
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
+
+  const addNewFitScore = (setAverageFitScoreData, newScore) => {
+    setAverageFitScoreData((prev) => {
+      // Find the next upload number
+      const nextUpload = (prev.length > 0 ? parseInt(prev[prev.length - 1].upload) + 1 : 1).toString();
+  
+      // Create a new object
+      const newObject = { upload: nextUpload, score: newScore };
+  
+      // Return the updated array
+      return [...prev, newObject];
+    });
+  };
+
+  const uploadJobDescription = async () => {
+    setFeedBackLoaded(false);
+    if (!ud) {
+      console.error('UID is not set yet!');
+      return;
+    }
+  
+    const payload = {
+      uid: ud,
+      job_description: jobDescription,
+    };
+    let title, description;
+    setProgress(0);
+    setFeedBackLoading(true);
+  
+    // Start a fake progress interval
+    const progressInterval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev < 90) {
+          return prev + 10;
         }
-    
-        const data = await response.json();
-        const result = await fetchFitScoreAndFeedback(data.uid);
-        let avgUpdateScore;
-        if (result) {
-          const { feedBack, fitScore } = result;
-          avgUpdateScore = fitScore;
-          setFeedBack(feedBack);
-          setFitScore(fitScore);
-        }
-    
-        title = "Upload Success";
-        description = `Job description uploaded successfully.`;
-        setFeedBackLoaded(true);
-        setFeedBackLoading(false);
-        setProgress(100);
-        toast({ title: title, description: description });
-    
-        addNewFitScore(setAverageFitScoreData, avgUpdateScore);
-        setJobDescription("");
-        setTabValue("resume");
-        setResumeText("");
-        setResume(null);
-      } catch (error) {
-        title = "Upload Error";
-        description = "Something went wrong. Please try again.";
-        toast({ title: title, description: description });
+        clearInterval(progressInterval);
+        return prev;
+      });
+    }, 200);
+  
+    try {
+      const response = await fetch(`${base_url}/api/job-description`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
       }
-    };
+  
+      const data = await response.json();
+      const result = await fetchFitScoreAndFeedback(data.uid);
+      let avgUpdateScore;
+      if (result) {
+        const { feedBack, fitScore } = result;
+        avgUpdateScore = fitScore;
+        setFeedBack(feedBack);
+        setFitScore(fitScore);
+      }
+  
+      title = "Upload Success";
+      description = `Job description uploaded successfully.`;
+      setFeedBackLoaded(true);
+      setFeedBackLoading(false);
+      setProgress(100);
+      toast({ title: title, description: description });
+  
+      addNewFitScore(setAverageFitScoreData, avgUpdateScore);
+      setJobDescription("");
+      setTabValue("resume");
+      setResumeText("");
+      setResume(null);
+    } catch (error) {
+      title = "Upload Error";
+      description = "Something went wrong. Please try again.";
+      toast({ title: title, description: description });
+    }
+  };
 
     
-    const fetchFitScoreAndFeedback = async (sendUid) => {
-      try {
-        const response = await axios.post('http://localhost:8000/api/analyze', { uid: sendUid });
-        const feedBack = response.data.feedback;
-        const fitScore = response.data.fit_score;
-        console.log("response: ", feedBack, fitScore);
-        return { feedBack, fitScore };
-      } catch (error) {
-        console.error("Error fetching data: ", error);
-        return false;
-      }
-    };
+  const fetchFitScoreAndFeedback = async (sendUid) => {
+    try {
+      const response = await axios.post('http://localhost:8000/api/analyze', { uid: sendUid });
+      const feedBack = response.data.feedback;
+      const fitScore = response.data.fit_score;
+      console.log("response: ", feedBack, fitScore);
+      return { feedBack, fitScore };
+    } catch (error) {
+      console.error("Error fetching data: ", error);
+      return false;
+    }
+  };
     
 
-    const convertTextToPDF = (text) => {
+  const convertTextToPDF = (text) => {
     const doc = new jsPDF();
     const pageHeight = doc.internal.pageSize.height; // Page height
     const margin = 10; // Margin from the edges
@@ -202,7 +203,7 @@ export default function UploadFormArea({setAverageFitScoreData,setFeedBackLoaded
 
     const pdfBlob = doc.output('blob'); // Generate the PDF as a Blob
     return pdfBlob;
-    };
+  };
 
   
   const handleTxtFile = (file)=>{
@@ -418,5 +419,3 @@ export default function UploadFormArea({setAverageFitScoreData,setFeedBackLoaded
     
   );
 }
-
-
