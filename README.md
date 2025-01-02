@@ -14,7 +14,7 @@ Project uses Google's AI model Gemini to take inputs (Resume and Job Description
 <a href="https://trello.com/b/KFmJz5Q3/cs490-ai-powered-resume-analyzer-and-job-matcher">Trello Board</a>
 
 ## Setup Instructions:
-- Navigate to `AI-Resume-Analyzer/docs`
+- Navigate to `AI-Resume-Analyzer/docs/SETUP.md`
 
 ## ShowCase:
 
@@ -76,6 +76,8 @@ Result:
 ![image](https://github.com/user-attachments/assets/2b3d29f8-ed71-480f-b605-f32e7c2bcb5c)
 
 
-Alternate result using a different resume and job description:
+Alternate results using a different resume and job description:
 ![image](https://github.com/user-attachments/assets/f914e384-41f3-46cd-b6f1-82d0cb4a0a71)
+![image](https://github.com/user-attachments/assets/08d81f11-aa10-4022-b2f2-6507015e9c33)
+
 
