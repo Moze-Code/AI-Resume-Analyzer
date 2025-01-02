@@ -13,66 +13,69 @@ Project uses Google's AI model Gemini to take inputs (Resume and Job Description
 
 <a href="https://trello.com/b/KFmJz5Q3/cs490-ai-powered-resume-analyzer-and-job-matcher">Trello Board</a>
 
-# How To Run Project using Docker
-   - Make sure Docker is installed
-   - In the `CS490-team4` directory,
-   - Run: `docker-compose up --build`
-   - To stop docker: `docker-compose down`
+## Setup Instructions:
+- Navigate to `AI-Resume-Analyzer/docs`
 
-   ## Endpoints:
-  - `Backend server (FastAPI)`: [http://localhost:8000/docs](http://localhost:8000/docs)
-  - `Frontend server (React.js)`: [http://localhost:3000](http://localhost:3000)
+## ShowCase:
 
-   ## Endpoint Screens:
- ![image](https://github.com/user-attachments/assets/1e5d0dc0-3063-4ea6-8f3b-ce2dbba52d57)
- ![image](https://github.com/user-attachments/assets/b6c0f67e-6ccb-4914-acd9-d68755e99190)
+- Using my resume
+![image](https://github.com/user-attachments/assets/9c514bb7-ad6e-444d-8b21-0b912c266889)
 
 
-   
+- With the following job description:
 
-# How To Initialize And Run The FastAPI Endpoints
+``` 
+Full job description
+Location
 
-1. First you will need to initialize a local python environment in the root directory of the project. Run `python3 -m venv venv` while
-   in <b>cs490-team4</b> folder.
-2. After initializing the virtual environment, it should create a folder in your directory called <b>venv</b>.
-3. Next, if the virtual environment did not activate for you, run `source venv/bin/activate`.
-4. In your cli, you should see <b>(venv)</b> at the beginning of the prompt.
-5. Then, run `pip install -r requirements.txt`. This will install all the packages necessary to run the project.
-6. To run the API, in your console type in `fastapi dev backend/app.py`. This should enable the FastAPI endpoints on port 8000. To see the
-   swagger with all the explanation head to <b>localhost:8000/docs</b>.
+New York
+Type
 
-# How To Run Backend Tests
+Full time
+Department
 
-1. After initializing the packages, run this command in your console: `pytest tests/backend` to run all of the backend python tests.
+Engineering
+
+About Ramp
+Ramp is a financial operations platform designed to save businesses time and money. Combining corporate cards with expense management, bill payments, vendor management, accounting automation, and more, Ramp's all-in-one solution frees finance teams to do the best work of their lives. More than 25,000 companies, from family-owned farms to e-commerce giants to space startups, have saved $1B and 10M hours with Ramp. Founded in 2019, Ramp powers the fastest-growing corporate card and bill payment platform in America, and enables over 35 billion dollars in purchases each year.
+
+Ramp's investors include Sequoia, Founders Fund, Thrive Capital, Khosla Ventures, Greylock, Stripe, Goldman Sachs, Coatue, and Redpoint, as well as over 100 angel investors who were founders or executives of leading companies. The Ramp team comprises talented leaders from leading financial services and fintech companies—Stripe, Affirm, Goldman Sachs, American Express, Mastercard, Visa, Capital One—as well as technology companies such as Meta, Uber, Netflix, Twitter, Dropbox, and Instacart.
+
+Ramp has been named to Fast Company's Most Innovative Companies list and LinkedIn's Top U.S. Startups for over 3 years, as well as the Forbes Cloud 100, CNBC Disruptor 50, and TIME Magazine's 100 Most Influential Companies.
+
+Check out our Engineering Blog for more on our tech stack, mission and values!
+
+About the Role
+
+Ramp is, at its core, an engineering company, and is on a mission to build the best engineering team in the US! We are looking for frontend and full stack engineers who are excited to be part of our early story and help us build a diverse and vibrant tech community. We hire engineers with a broad set of technical skills, who are highly cross-functional, and eager to solve a wide range of engineering challenges. Our ideal candidate has a strong sense of ownership and enjoys owning projects from inception to scaling it in production. We value people who take pride in their work, and show an aptitude for learning quickly whether they’re familiar with our stack or not. As an early employee, you'll be working with a nimble team of committed and talented engineers and having a large, long-term impact on technical design and engineering culture.
+
+What You'll Do
+
+Build performant, beautiful, and usable interfaces that solve for growing businesses with complex needs
+Ship products and services in cross-functional teams
+Work with sales and business teams to incorporate and productize customer feedback
+Help establish engineering process, tools, and systems that will allow us to scale the code base, productivity, and the team
+What You'll Need
+
+Graduating with a B.S. (or higher) in Computer Science or a related technical field; this role is ideal for a candidate with an expected graduation date in or around May 2025 given the deferred start date in Summer/Fall 2025
+Proficiency in JavaScript, with a knack for getting the visuals right
+Experience with one or more object-oriented programming languages
+Track record of shipping high quality products and features or a portfolio of side projects
+Ability to turn business and product ideas into engineering solutions
+Desire to work in a fast-paced environment, continuously grow, and master your craft
+Alignment with Ramp’s core values of enabling businesses to grow more by spending less
+Nice to Haves
+
+Proficiency in React v16+
+Familiarity with or desire to learn our tech stack which includes, but not limited to: Flask (Python), Elixir, AWS, RabbitMQ, PostgreSQL
+Passion for, or curiosity to learn, financial technology
+```
+
+Result:
+
+![image](https://github.com/user-attachments/assets/2b3d29f8-ed71-480f-b605-f32e7c2bcb5c)
 
 
-# How To Write Tests For Endpoints
+Alternate result using a different resume and job description:
+![image](https://github.com/user-attachments/assets/f914e384-41f3-46cd-b6f1-82d0cb4a0a71)
 
-1. Import `TestClient` from `fastapi.testclient`.
-2. Import the app from `backend/app.py`.
-3. To create a test function, write a function that start with `test_<name-of-your-test>`
-4. Test it using the command in <b>How To Run Backend Tests</b>. 
-
-
-# How To Write An Endpoint
-
-1. Create a new directory inside the `backend` subdirectory with a desired endpoint.
-2. Inside of the directory, initialize an ApiRouter.
-3. Write the desired endpoint.
-4. Import the router into `backend/app.py` and initialize it with `app.include_router(<your-endpoint>)`.
-5. Run it with `fastapi dev backend/app.py` to make sure everything is correct.
-
-# How to connect Gemini LLM
-
-1. Create your own Gemini API Key by following <a href="https://ai.google.dev/">this link</a>
-2. Once you get the API
-3. Find the `.env` file inside the `backend/resume_analyzer` folder
-4. Open the file to reveal a blank field called `GEMINI_API_KEY`
-5. Copy and paste your Gemini API Key inside of that file to enable the AI functionality
-6. Enjoy!
-
-<i>Good Luck Coding!</i>
-
-# FrontEnd Instructions
-
-- Navigate to `frontend/sign-on-form/README.md` for a detailed read me about running the react project
