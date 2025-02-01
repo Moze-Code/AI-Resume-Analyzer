@@ -5,7 +5,6 @@
 2. Once you get the API
 3. Find the `.env` file inside the `backend/resume_analyzer` folder
 4. Open the file to reveal a blank field called `GEMINI_API_KEY`
-- ![alt text](image.png)
 5. Copy and paste your Gemini API Key inside the parenthesis of that file to enable the AI functionality
 
 # Step 2:
