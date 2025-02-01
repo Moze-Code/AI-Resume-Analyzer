@@ -19,7 +19,8 @@ Project uses Google's AI model Gemini to take inputs (Resume and Job Description
 ## ShowCase:
 
 - Using my resume
-![image](https://github.com/user-attachments/assets/9c514bb7-ad6e-444d-8b21-0b912c266889)
+![image](https://github.com/user-attachments/assets/f1e77c83-4699-4af1-a972-69ceae9e34a9)
+
 
 
 - With the following job description:
