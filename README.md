@@ -77,7 +77,7 @@ Familiarity with or desire to learn our tech stack which includes, but not limit
 Passion for, or curiosity to learn, financial technology
 ```
 
-Result:
+- Result:
 
 ![image](https://github.com/user-attachments/assets/2b3d29f8-ed71-480f-b605-f32e7c2bcb5c)
 
