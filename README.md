@@ -82,7 +82,7 @@ Passion for, or curiosity to learn, financial technology
 ![image](https://github.com/user-attachments/assets/2b3d29f8-ed71-480f-b605-f32e7c2bcb5c)
 
 
-Alternate results using a different resume and job description:
+- **Alternate results using a different resume and job description:**
 ![image](https://github.com/user-attachments/assets/f914e384-41f3-46cd-b6f1-82d0cb4a0a71)
 
 ![image](https://github.com/user-attachments/assets/08d81f11-aa10-4022-b2f2-6507015e9c33)
