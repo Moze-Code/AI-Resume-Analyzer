@@ -17,7 +17,7 @@ Project uses Google's AI model Gemini to take inputs (Resume and Job Description
 - Navigate to `AI-Resume-Analyzer/docs/SETUP.md`
 
 ## ShowCase:
-- **The user taken to a login/register page:**
+- **The user is taken to a login/register page:**
   ![image](https://github.com/user-attachments/assets/b6c0f67e-6ccb-4914-acd9-d68755e99190)
 
 - **Once logged in, the user is nagivated to the dashboard page and is ready to give a resume(pdf,docx or txt) and a job description:**
